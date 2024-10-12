@@ -278,10 +278,10 @@ def redraw_window(win, board, time, strikes):
     # Draw time
     fnt = pygame.font.SysFont("comicsans", 40)
     text = fnt.render("Time: " + format_time(time), 1, (0,0,0))
-    win.blit(text, (540 - 160, 560))
+    win.blit(text, (530-text.get_width(), 600-text.get_height()))
     # Draw Strikes
     text = fnt.render("X " * strikes, 1, (255, 0, 0))
-    win.blit(text, (20, 560))
+    win.blit(text, (10, 600-text.get_height()))
     # Draw grid and board
     board.draw()
 
@@ -291,8 +291,7 @@ def format_time(secs):
     minute = secs//60
     hour = minute//60
 
-    mat = " " + str(minute) + ":" + str(sec)
-    return mat
+    return f"{hour:02d}:{minute:02d}:{sec:02d}"
 
 
 def main():
